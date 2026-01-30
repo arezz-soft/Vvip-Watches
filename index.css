@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+:root {
+    --bg-color: #020205;
+    --universe-bg: url('Pictures/universe.png');
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --text-color: #ffffff;
+    --secondary-text: #b3b3b3;
+    --accent-color: #00f2ff;
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    background-image: var(--universe-bg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Starry Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(1px 1px at 20% 30%, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 40% 70%, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 50% 40%, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 80% 90%, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 10% 80%, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 90% 20%, #fff, rgba(0, 0, 0, 0));
+    background-size: 300px 300px;
+    opacity: 0.4;
+    z-index: -1;
+    animation: twinkle 10s infinite;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+header {
+    padding: 3rem 1rem;
+    text-align: center;
+    border-bottom: 2px solid var(--glass-border);
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #fff, var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.Contact-us {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.Contact-us h2 {
+    text-align: center;
+    font-size: 2rem;
+    background: linear-gradient(120deg, #dec9c9, #00f2ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.contact-item button {
+    width: 100%;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    color: var(--text-color);
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item button i {
+    font-size: 2rem;
+    transition: var(--transition);
+}
+
+.contact-item button span {
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+/* Platform Specific Colors */
+.contact-item:nth-child(1) button:hover i {
+    color: #25d366;
+}
+
+/* Whatsapp */
+.contact-item:nth-child(2) button:hover i {
+    color: #1877f2;
+}
+
+/* Facebook */
+.contact-item:nth-child(3) button:hover i {
+    color: #e4405f;
+}
+
+/* Instagram */
+.contact-item:nth-child(4) button:hover i {
+    color: #000000;
+}
+
+.contact-item button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
+}
+
+.contact-item button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: 0.5s;
+}
+
+.contact-item button:hover::after {
+    left: 100%;
+}
+
+footer {
+    padding: 3rem 1rem;
+    text-align: center;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    border-top: 1px solid var(--glass-border);
+    margin-top: 4rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+@media (max-width: 768px) {
+    body {
+        background-size: cover;
+        height: 100vh;
+    }
+
+    .main {
+        height: 60vh;
+    }
+
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .contact-item button {
+        padding: 2rem 0.8rem;
+        border: 1px solid var(--accent-color);
+    }
+
+    .contact-item button i {
+        font-size: 2.5rem;
+
+    }
+
+    /* Platform Specific Colors */
+    .contact-item:nth-child(1) button i {
+        color: #25d366;
+    }
+
+    /* Whatsapp */
+    .contact-item:nth-child(2) button i {
+        color: #1877f2;
+    }
+
+    /* Facebook */
+    .contact-item:nth-child(3) button i {
+        color: #e4405f;
+    }
+
+    /* Instagram */
+    .contact-item:nth-child(4) button i {
+        color: #000000;
+    }
+
+    .contact-item button span {
+        font-size: 0.85rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
