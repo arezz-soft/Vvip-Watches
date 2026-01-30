@@ -199,11 +199,11 @@ footer {
 @media (max-width: 768px) {
     body {
         background-size: cover;
-        height: 100vh;
+        background-attachment: scroll;
     }
 
     .main {
-        height: 60vh;
+        padding: 1rem;
     }
 
     .contact-grid {
